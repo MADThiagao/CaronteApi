@@ -48,3 +48,57 @@ Temporary Items
 *.dll
 *.pdb
 CaronteApi/bin/CaronteApi.dll.config
+CaronteApi/bin/Newtonsoft.Json.xml
+CaronteApi/obj/Debug/CaronteApi.Repository.Resource.LancamentoResource.resources
+CaronteApi/bin/System.Net.Http.Formatting.xml
+CaronteApi/bin/System.Web.Http.WebHost.xml
+CaronteApi/obj/Debug/CaronteApi.csproj.FileListAbsolute.txt
+CaronteApi/obj/Debug/CaronteApi.csproj.GenerateResource.Cache
+CaronteApi/obj/Debug/CaronteApi.csprojResolveAssemblyReference.cache
+CaronteApi/obj/Debug/DesignTimeResolveAssemblyReferences.cache
+CaronteApi/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+CaronteApi/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+CaronteApi/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+CaronteApi/obj/Debug/WalletRest.csproj.FileListAbsolute.txt
+CaronteApi/obj/Release/AspnetCompileMerge/TempBuildDir/Web.config
+CaronteApi/obj/Release/AspnetCompileMerge/TempBuildDir/packages.config
+CaronteApi/obj/Release/AspnetCompileMerge/TempBuildDir/PrecompiledApp.config
+CaronteApi/obj/Release/AspnetCompileMerge/TempBuildDir/bin/App_global.asax.compiled
+CaronteApi/obj/Release/CSAutoParameterize.parameters.xml
+CaronteApi/obj/Release/AspnetCompileMerge/Source/packages.config
+CaronteApi/obj/Release/AspnetCompileMerge/Source/Web.config
+CaronteApi/obj/Release/CSAutoParameterize/transformed/Web.config
+CaronteApi/obj/Release/CSAutoParameterize/original/Web.config
+CaronteApi/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+CaronteApi/obj/Debug/WalletRest.csproj.GenerateResource.Cache
+CaronteApi/obj/Debug/WalletRest.csprojResolveAssemblyReference.cache
+CaronteApi/obj/Debug/WalletRest.Repository.Resource.UsuarioResource.resources
+CaronteApi/obj/Release/DesignTimeResolveAssemblyReferences.cache
+CaronteApi/obj/Release/AspnetCompileMerge/Source/Global.asax
+CaronteApi/obj/Debug/__TestProfilesForFilePreview__/madThiagao.pubxml
+CaronteApi/obj/Release/Package/WalletRest.SourceManifest.xml
+CaronteApi/obj/Release/Package/PackageTmp/Web.config
+CaronteApi/obj/Release/TransformWebConfig/assist/Web.config
+CaronteApi/obj/Release/TransformWebConfig/original/Web.config
+CaronteApi/obj/Release/WalletRest.csproj.FileListAbsolute.txt
+CaronteApi/obj/Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+CaronteApi/obj/Release/WalletRest.csprojResolveAssemblyReference.cache
+CaronteApi/obj/Release/TransformWebConfig/transformed/Web.config
+CaronteApi/obj/Release/WalletRest.Repository.Resource.LancamentoResource.resources
+CaronteApi/obj/Release/WalletRest.Repository.Resource.UsuarioResource.resources
+CaronteApi/obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+CaronteApi/obj/Release/Package/FilePreviewParameter.xml
+CaronteApi/obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+CaronteApi/obj/Release/_WPPLastBuildInfo.txt
+CaronteApi/obj/Release/WalletRest.csproj.GenerateResource.Cache
+CaronteApi/Properties/PublishProfiles/madThiagao - Web Deploy.pubxml
+CaronteApi/Web.Release.config
+CaronteApi/Web.config
+CaronteApi/obj/Release/__TestProfilesForFilePreview__/madThiagao.pubxml
+CaronteApi/obj/Release/Package/PackageTmp/Global.asax
+CaronteApi/Properties/PublishProfiles/madThiagao - FTP.pubxml
+CaronteApi/obj/Release/Package/PackageTmp/packages.config
+CaronteApi/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
+CaronteApi/Properties/PublishProfiles/madThiagao - Web Deploy.pubxml.user
+CaronteApi/Properties/PublishProfiles/madThiagao - FTP.pubxml.user
+CaronteApi/Web.Debug.config
