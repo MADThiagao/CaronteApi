@@ -121,7 +121,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Projetos\CaronteCore\CaronteCore\CaronteCore.csproj">
+    <ProjectReference Include="..\..\CaronteCore\CaronteCore.csproj">
       <Project>{543cc30b-5398-498c-b669-79c81491052c}</Project>
       <Name>CaronteCore</Name>
     </ProjectReference>

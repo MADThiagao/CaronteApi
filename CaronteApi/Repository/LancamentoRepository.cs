@@ -23,7 +23,10 @@ namespace CaronteApi.Repository
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@IdUsuario", entidade.IdUsuario);
-                cmd.Parameters.AddWithValue("@IdCategoria", entidade.IdCategoria != null ? entidade.IdCategoria : null);
+
+                if (entidade.IdCategoria != null)
+                    cmd.Parameters.AddWithValue("@IdCategoria", entidade.IdCategoria);
+                //cmd.Parameters.AddWithValue("@IdCategoria", entidade.IdCategoria != null ? entidade.IdCategoria : null);
                 cmd.Parameters.AddWithValue("@Descricao", entidade.Descricao);
                 cmd.Parameters.AddWithValue("@Tipo", entidade.Tipo);
                 cmd.Parameters.AddWithValue("@Valor", entidade.Valor);

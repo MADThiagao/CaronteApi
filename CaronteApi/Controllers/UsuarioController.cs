@@ -27,23 +27,37 @@ namespace CaronteApi.Controllers
             this.repository = repository;
         }
 
-       /* [Route("id:int")]
-        public IHttpActionResult getUsuario(int id)
+        [Route("api/usuario/Logar")]
+        [HttpPost]
+        public IHttpActionResult Logar(LoginDTO login)
         {
-            var usuario = repository.GetById(id);
+
+            Usuario usuario = repository.Logar(login);
             if (usuario == null)
                 return NotFound();
-            
+
             return Ok(usuario);
         }
 
-       [Route("api/usuario")]
-       public IEnumerable<Usuario> getAllUsuarios()
-       {
-           var usuarios = repository.GetAll();
 
-           return usuarios;
-       }*/
+
+        /* [Route("id:int")]
+         public IHttpActionResult getUsuario(int id)
+         {
+             var usuario = repository.GetById(id);
+             if (usuario == null)
+                 return NotFound();
+
+             return Ok(usuario);
+         }
+
+        [Route("api/usuario")]
+        public IEnumerable<Usuario> getAllUsuarios()
+        {
+            var usuarios = repository.GetAll();
+
+            return usuarios;
+        }*/
 
         /*[Route("api/usuario/autoriza/{login}_{senha}")]
         public IHttpActionResult getValidaUsuario(string login, string senha)
@@ -55,43 +69,33 @@ namespace CaronteApi.Controllers
             return Ok(usuario);
         }*/
 
-     /*   [Route("api/usuario/autoriza/{login}_{senha}")]
-        //public IHttpActionResult getValidaUsuario(UsuarioValidaDTO usuario)
-        public IHttpActionResult getValidaUsuario(string login, string senha)
+        /*   [Route("api/usuario/autoriza/{login}_{senha}")]
+           //public IHttpActionResult getValidaUsuario(UsuarioValidaDTO usuario)
+           public IHttpActionResult getValidaUsuario(string login, string senha)
+           {
+               UsuarioLoginDTO teste = new UsuarioLoginDTO()
+               {
+                   Login = login,
+                   Senha = senha
+               };
+
+              var usuario = repository.UsuarioLogin(teste);
+              if (usuario == null)
+                  return NotFound();
+
+              return Ok(usuario);
+          }*/
+
+
+
+
+        /*[Route("api/usuario/login/{login}")]
+        public bool getValidaLogin(string login)
         {
-            UsuarioLoginDTO teste = new UsuarioLoginDTO()
-            {
-                Login = login,
-                Senha = senha
-            };
+            var existe = repository.validaLogin(login);
 
-           var usuario = repository.UsuarioLogin(teste);
-           if (usuario == null)
-               return NotFound();
-           
-           return Ok(usuario);
-       }*/
-
-        [Route("api/usuario/")]
-        [HttpPost]
-        public IHttpActionResult Logar(LoginDTO login)
-        {
-
-            Usuario usuario = repository.Logar(login);
-            if (usuario == null)
-                return NotFound();
-
-            return Ok(usuario);
-        }
- 
-
-       /*[Route("api/usuario/login/{login}")]
-       public bool getValidaLogin(string login)
-       {
-           var existe = repository.validaLogin(login);
-           
-           return existe;
-       }*/
+            return existe;
+        }*/
 
         /* [HttpPost]
          //[Route("api/usuario/salvar/{usuario}")]
