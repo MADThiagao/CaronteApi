@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using CaronteCore.Models;
 using CaronteApi.Interfaces;
 using CaronteCore.Utils;
+using CaronteCore.Models.DTO;
 
 namespace CaronteApi.Repository
 {
@@ -19,14 +20,13 @@ namespace CaronteApi.Repository
         {
             using (SqlConnection conexao = new SqlConnection(_connectionString))
 
-            using (SqlCommand cmd = new SqlCommand("usp_LancamentoAdicionar", conexao))
+            using (SqlCommand cmd = new SqlCommand("usp_LancamentoAdicionar", conexao) { CommandType = CommandType.StoredProcedure })
             {
-                cmd.CommandType = CommandType.StoredProcedure;
+
                 cmd.Parameters.AddWithValue("@IdUsuario", entidade.IdUsuario);
 
                 if (entidade.IdCategoria != null)
                     cmd.Parameters.AddWithValue("@IdCategoria", entidade.IdCategoria);
-                //cmd.Parameters.AddWithValue("@IdCategoria", entidade.IdCategoria != null ? entidade.IdCategoria : null);
                 cmd.Parameters.AddWithValue("@Descricao", entidade.Descricao);
                 cmd.Parameters.AddWithValue("@Tipo", entidade.Tipo);
                 cmd.Parameters.AddWithValue("@Valor", entidade.Valor);
@@ -60,9 +60,8 @@ namespace CaronteApi.Repository
             try
             {
                 using (SqlConnection conexao = new SqlConnection(_connectionString))
-                using (SqlCommand cmd = new SqlCommand("usp_LancamentoBuscarTodos", conexao))
+                using (SqlCommand cmd = new SqlCommand("usp_LancamentoBuscarTodos", conexao) { CommandType = CommandType.StoredProcedure })
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@IdUsuario", id);
 
                     conexao.Open();
@@ -98,6 +97,44 @@ namespace CaronteApi.Repository
         {
             throw new NotImplementedException();
         }
+
+        public List<GraficoLinhaDTO> GraficoLinha(int IdUsuario)
+        {
+
+            List<GraficoLinhaDTO> lista = new List<GraficoLinhaDTO>();
+
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(_connectionString))
+                using (SqlCommand cmd = new SqlCommand("usp_LancamentoGraficoLinha", conexao) { CommandType = CommandType.StoredProcedure })
+                {
+                    cmd.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+
+                    conexao.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                        if (reader.HasRows)
+                            while (reader.Read())
+                            {
+                                lista.Add(new GraficoLinhaDTO()
+                                {
+                                    Dia = reader.GetInt32(reader.GetOrdinal("Dia")),
+                                    ValorAtual = MetodoExtensao.BuscarValor<decimal>(reader, "ValorAtual"),
+                                    ValorProjecao = MetodoExtensao.BuscarValor<decimal>(reader, "ValorProjecao")
+                                });
+                            }
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return lista;
+
+        }
+
         /*
 public IEnumerable<LancamentoDTO> Select(LancamentoSelectDTO lancamentoSelectDTO)
 {
