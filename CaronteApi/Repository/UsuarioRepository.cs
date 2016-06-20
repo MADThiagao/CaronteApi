@@ -37,7 +37,7 @@ namespace CaronteApi.Repository
             throw new NotImplementedException();
         }
 
-        public Usuario Remover(int id)
+        public void Remover(Usuario entidade)
         {
             throw new NotImplementedException();
         }

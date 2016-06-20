@@ -10,7 +10,7 @@ namespace CaronteApi.Interfaces
         void Adicionar(T entidade);
         IEnumerable<T> BuscarTodos(int id);
         T Buscar(int id);
-        T Remover(int id);
+        void Remover(T entidade);
         void Atualizar(T entidade);
     }
 }

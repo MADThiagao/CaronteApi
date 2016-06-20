@@ -47,11 +47,36 @@ namespace CaronteApi.Controllers
             return Ok(lancamento);
         }
 
+        [HttpGet]
+        [Route("api/Lancamento/{IdUsuario}/BuscarMensal")]
+        public IHttpActionResult BuscarMensal(int IdUsuario)
+        {
+            IEnumerable<Lancamento> lista = repository.BuscarMensal(IdUsuario);
+            if (lista == null)
+                return NotFound();
+
+            return Ok(lista);
+        }
+
         [HttpPost]
         [Route("api/Lancamento/Adicionar")]
         public void Adicionar(Lancamento lancamento)
         {
             repository.Adicionar(lancamento);
+        }
+
+        [HttpPost]
+        [Route("api/Lancamento/Remover")]
+        public void Remover(Lancamento lancamento)
+        {
+            repository.Remover(lancamento);
+        }
+
+        [HttpPost]
+        [Route("api/Lancamento/Atualizar")]
+        public void Atualizar(Lancamento lancamento)
+        {
+            repository.Atualizar(lancamento);
         }
 
         [HttpPost]
@@ -61,108 +86,12 @@ namespace CaronteApi.Controllers
             return repository.GraficoLinha(usuario.Id);
         }
 
-
-        /*
-        private ILancamentoRepository repository = null;
-
-        public LancamentoController() 
-        {
-            this.repository = new LancamentoRepository();
-        }
-
-        public LancamentoController(ILancamentoRepository repository)
-        {
-            this.repository = repository;
-        }
-        */
-        /*
-                [Route("api/Lancamento/select")]
-                [HttpPost]
-                public IHttpActionResult SelectLancamento(LancamentoSelectDTO lancamentoSelectDTO)
-                {
-                    IEnumerable <LancamentoDTO> lancamentoDTO = repository.Select(lancamentoSelectDTO);
-                    if (lancamentoDTO == null)
-                        return NotFound();
-
-                    return Ok(lancamentoDTO);
-                }
-
-                [HttpPost]
-                //[Route("api/Lancamento/{LancamentoInserirDTO}")]
-                public IHttpActionResult InsereLancamento(LancamentoInserirDTO lancamento)
-                {
-                    var resultado = repository.Insert(lancamento);
-                    if (resultado == null)
-                        return NotFound();
-
-                    return Ok();
-                }
-
-                [Route("api/Lancamento/update/")]
-                [HttpPost]
-                public IHttpActionResult UpdateLancamento(LancamentoInserirDTO lancamento)
-                {
-                    var resultado = repository.Update(lancamento);
-                    if (resultado == null)
-                        return NotFound();
-
-                    return Ok();
-                }
-
-                [Route("api/Lancamento/{IdLancamento}")]
-                [HttpGet]
-                public IHttpActionResult SelectOneLancamento(int IdLancamento)
-                {
-                    var lancamento = repository.SelectEdit(IdLancamento);
-                    if (lancamento == null)
-                        return NotFound();
-
-                    return Ok(lancamento);
-                }
-
-                [Route("api/Lancamento/delete/")]
-                [HttpPost]
-                public IHttpActionResult DeleteLancamento(LancamentoDTO Lancamento)
-                {
-                    var resultado = repository.Delete(Lancamento);
-                    if (resultado == null)
-                        return NotFound();
-
-                    return Ok();
-                }
-
-                /*
-                // rever route ~/
-                [Route("api/Lancamento/{IdUsuario}")]
-                public IEnumerable<Lancamento> getAllLancamentos(int IdUsuario)
-                {
-                    return repository.GetAll(IdUsuario);             
-                }*/
-
-
-
-        /*
         [HttpPost]
-        [Route("api/Lancamento/update/{lancamento}")]
-        public IHttpActionResult postUpdateLancamento(Lancamento lancamento)
+        [Route("api/Lancamento/RecuperarGraficoDonut")]
+        public List<GraficoDonutDTO> RecuperarGraficoDonut(Usuario usuario)
         {
-            var resultado = repository.Update(lancamento);
-            if (resultado == null)
-                return NotFound();
-
-            return Ok(resultado);
+            return repository.GraficoDonut(usuario.Id);
         }
 
-
-        [Route("api/Lancamento/Delete/{id}")]
-        public IHttpActionResult getDeleteLancamento(int IdLancamento)
-        {
-            var resultado = repository.Delete(IdLancamento);
-            if (resultado == null)
-                return NotFound();
-
-            return Ok(resultado);  
-        }
-        */
     }
 }

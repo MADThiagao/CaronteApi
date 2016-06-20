@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using CaronteApi.Interfaces;
 using CaronteApi.Repository;
+using CaronteCore.Models;
 
 namespace CaronteApi.Controllers
 {
@@ -22,66 +23,39 @@ namespace CaronteApi.Controllers
         {
             this.repository = repository;
         }
-        /*
-        [HttpPost]
-        [Route("api/Categoria/select")]
-        public IHttpActionResult SelecionaCategorias(UsuarioDTO Usuario)
-        {
-            IEnumerable<CategoriaDTO> listaDeCategorias = repository.Select(Usuario.IdUsuario);
-            if (listaDeCategorias.Equals(0))
-                return NotFound();
-
-            return Ok(listaDeCategorias);
-        }
 
 
         [HttpGet]
-        [Route("api/Categoria/{IdCategoria}")]
-        public IHttpActionResult SelectOneCategoria(int IdCategoria)
+        [Route("api/Categoria/{IdUsuario}/BuscarTodos")]
+        public IHttpActionResult BuscarTodos(int IdUsuario)
         {
-            var categoria = repository.SelectOne(IdCategoria);
-            if (categoria == null)
+            IEnumerable<Categoria> lista = repository.BuscarTodos(IdUsuario);
+            if (lista == null)
                 return NotFound();
 
-            return Ok(categoria);
+            return Ok(lista);
         }
 
         [HttpPost]
-        public IHttpActionResult InsertCategoria(CategoriaDTO categoria)
+        [Route("api/Categoria/Adicionar")]
+        public void Adicionar(Categoria categoria)
         {
-            repository.Insert(categoria);
-
-            return Ok();
+            repository.Adicionar(categoria);
         }
 
         [HttpPost]
-        [Route("api/Categoria/delete")]
-        public IHttpActionResult DeleteCategoria(CategoriaDTO categoria)
+        [Route("api/Categoria/Remover")]
+        public void Remover(Categoria categoria)
         {
-            repository.Delete(categoria);
-
-            return Ok();
+            repository.Remover(categoria);
         }
 
         [HttpPost]
-        [Route("api/Categoria/update")]
-        public IHttpActionResult updateCategoria(CategoriaDTO categoria)
+        [Route("api/Categoria/Atualizar")]
+        public void Atualizar(Categoria categoria)
         {
-            repository.Update(categoria);
-
-            return Ok();
+            repository.Atualizar(categoria);
         }
 
-        [HttpPost]
-        [Route("api/Categoria/select/Ex")]
-        public IHttpActionResult SelecionaCategoriasEx(UsuarioDTO Usuario)
-        {
-            IEnumerable<CategoriaDTO> listaDeCategorias = repository.SelectEx(Usuario.IdUsuario);
-            if (listaDeCategorias.Equals(0))
-                return NotFound();
-
-            return Ok(listaDeCategorias);
-        }
-        */
     }
 }

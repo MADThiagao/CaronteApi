@@ -18,12 +18,43 @@ namespace CaronteApi.Repository
 
         public void Adicionar(Categoria entidade)
         {
-            throw new NotImplementedException();
+            using (SqlConnection conexao = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand("usp_CategoriaAdicionar", conexao) { CommandType = CommandType.StoredProcedure })
+            {
+                cmd.Parameters.AddWithValue("@IdUsuario", entidade.IdUsuario);
+                cmd.Parameters.AddWithValue("@Descricao", entidade.Descricao);
+
+                try
+                {
+                    conexao.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException)
+                {
+                    throw;
+                }
+            }
         }
 
         public void Atualizar(Categoria entidade)
         {
-            throw new NotImplementedException();
+            using (SqlConnection conexao = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand("usp_CategoriaAtualizar", conexao) { CommandType = CommandType.StoredProcedure })
+            {
+                cmd.Parameters.AddWithValue("@IdCategoria", entidade.Id);
+                cmd.Parameters.AddWithValue("@IdUsuario", entidade.IdUsuario);
+                cmd.Parameters.AddWithValue("@Descricao", entidade.Descricao);
+
+                try
+                {
+                    conexao.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException)
+                {
+                    throw;
+                }
+            }
         }
 
         public Categoria Buscar(int id)
@@ -31,16 +62,62 @@ namespace CaronteApi.Repository
             throw new NotImplementedException();
         }
 
-        
 
         public IEnumerable<Categoria> BuscarTodos(int id)
         {
-            throw new NotImplementedException();
+
+            List<Categoria> lista = new List<Categoria>();
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(_connectionString))
+                using (SqlCommand cmd = new SqlCommand("usp_CategoriaBuscarTodos", conexao) { CommandType = CommandType.StoredProcedure })
+                {
+                    cmd.Parameters.AddWithValue("@IdUsuario", id);
+
+                    conexao.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                        if (reader.HasRows)
+                            while (reader.Read())
+                            {
+                                lista.Add(new Categoria()
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("IdCategoria")),
+                                    IdUsuario = reader.GetInt32(reader.GetOrdinal("IdUsuario")),
+                                    Descricao = reader.GetString(reader.GetOrdinal("Descricao")),
+                                    Status = reader.GetString(reader.GetOrdinal("Status"))
+
+                                });
+                            }
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return lista;
         }
 
-        public Categoria Remover(int id)
+        public void Remover(Categoria entidade)
         {
-            throw new NotImplementedException();
+            using (SqlConnection conexao = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand("usp_CategoriaRemover", conexao) { CommandType = CommandType.StoredProcedure })
+            {
+                cmd.Parameters.AddWithValue("@IdCategoria", entidade.Id);
+                cmd.Parameters.AddWithValue("@IdUsuario", entidade.IdUsuario);
+
+                try
+                {
+                    conexao.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException)
+                {
+                    throw;
+                }
+            }
         }
 
 
